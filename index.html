@@ -1,0 +1,3250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Guideline</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            /* color  */
+            --bg-dark: rgba(44, 62, 80, 0.95);
+            --bg-color: #ecf1f1;
+            --green-color: #1a7d4f;
+            --accent-color: #ff6347;
+            --accent-light: rgba(255, 148, 71, 0.5);
+            --section-bg: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+            --text-gr-yellow-red: linear-gradient(to right, #ff8a00, #e52e71);
+
+            --text-color: #160d0d;
+            --text-white: #f5f5f5;
+            --text-black: #2c3e50;
+            --text-blue: #3498db;
+
+            --bg-gradient-lightBrown: #c5cfcf;
+            --bg-gradient-maroon: #f1f8f3;
+            /* font  */
+            --font-size-small: 0.8rem;
+            --font-size-medium: 1rem;
+            --font-size-large: 1.2rem;
+            --heading: 1.2rem;
+            /* others  */
+            --nav-height: 60px;
+            --transition-timing: 0.3s ease-in-out;
+
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+            --spacing-xl: 4rem;
+
+            /* Borders */
+            --border-radius: 8px;
+            --border-radius-lg: 16px;
+
+
+        }
+
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--bg-color);
+
+
+        }
+
+        /* common style  */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--text-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-color);
+            color: var(--accent-color);
+            border: 5px solid var(--accent-color);
+        }
+
+        .links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            will-change: transform;
+        }
+
+        .links a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition:
+                color var(--transition-timing),
+                background-color var(--transition-timing);
+        }
+
+        .links a:hover,
+        .links a:focus-visible {
+            color: var(--accent-color);
+            background-color: rgba(255, 255, 255, 0.1);
+            outline: none;
+        }
+
+        .links a[aria-current="page"] {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            padding: 10px;
+            margin: 5px;
+        }
+
+        .card h1 {
+            font-size: var(--heading);
+        }
+
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+                top: 0;
+            z-index: 1000;
+            min-height: var(--nav-height);
+             margin: 20px 10px;
+}
+        .navbar {
+            width: 100%;
+            max-width: 1200px;
+           
+            border-radius: 5px;
+            background: var(--bg-dark);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1001;
+            /* Ensure logo stays above mobile menu */
+            height: 100%;
+
+
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 25px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .brand-name {
+            margin: 0;
+            /* Remove default paragraph margin */
+            font-size: 1.8em;
+            /* Example: adjust font size */
+            font-weight: bold;
+            /* Example: make it bold */
+            white-space: nowrap;
+            /* Prevent text from wrapping */
+            color: var(--accent-color);
+
+        }
+
+        .logo img {
+            width: 60px;
+            /* Adjust this value based on your logo size */
+            height: auto;
+            display: block;
+            transition: opacity 0.3s ease-in-out;
+            margin: 0;
+        }
+
+        /* Hover effects */
+        .logo a:hover img,
+        .logo a:focus img {
+            opacity: 0.8;
+            transform: scale(1.1);
+            transition: transform var(--transition-timing);
+        }
+
+
+
+        /* Hamburger menu */
+
+
+        #hamburger {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            z-index: 101;
+            position: relative;
+        }
+
+        .hamburger-line {
+            width: 30px;
+            height: 3px;
+            background: var(--accent-color);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        #hamburger[aria-expanded="true"] .hamburger-line:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        #hamburger[aria-expanded="true"] .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        #hamburger[aria-expanded="true"] .hamburger-line:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .hamburger:focus-visible {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 3px;
+        }
+
+        .hamburger__icon {
+            color: var(--text-color);
+            font-size: 28px;
+            transition: transform var(--transition-timing);
+        }
+
+        @media (min-width: 768px) {
+            #hamburger {
+                display: none;
+            }
+        }
+
+        /* Navigation links */
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            will-change: transform;
+        }
+
+        .nav-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: var(--font-size-large);
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition:
+                color var(--transition-timing),
+                background-color var(--transition-timing);
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: var(--accent-color);
+            background-color: rgba(255, 255, 255, 0.1);
+            outline: none;
+        }
+
+        .nav-links a[aria-current="page"] {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+
+
+        /* Hero Design  Start */
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+         .hero-container::before{
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: 1;
+         }
+        .hero-container{
+                        color: white;
+
+            overflow: hidden;
+            margin: 20px;
+            position: relative;
+                        padding: var(--spacing-xl) 0;
+            border-radius: var(--border-radius-lg);
+            width: 100%;
+            max-width: 1200px;
+            background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--spacing-md);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--accent-color);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-md);
+            opacity: 0.9;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+
+        .hero a {
+            text-decoration: none;
+        }
+
+        /* Hero Design  Ended */
+
+        /* Service section starts  */
+        .service {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .service-header {
+            text-align: center;
+            padding: 40px 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .service-header h1 {
+            font-size: 2.8rem;
+            color: var(--text-black);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .service-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #3498db;
+            border-radius: 2px;
+        }
+
+        .service-header p {
+            font-size: 1.2rem;
+            color: var(--text-black);
+            max-width: 700px;
+            margin: 20px auto 0;
+            line-height: 1.6;
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background: var(--bg-color);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            will-change: opacity, transform;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: -40px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .service-icon i {
+            font-size: 24px;
+            color: var(--text-white);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #7f8c8d;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .read-more {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .read-more i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+            background: var(--bg-color);
+        }
+
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+
+        .certification-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #e74c3c;
+            color: var(--text-white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+
+        @media (max-width: 768px) {
+            .service-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .service-header p {
+                font-size: 1rem;
+            }
+
+            .services-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Service section ended  */
+
+        /* Service Process Section Started Here  */
+        .service-process {
+            display: flex;
+            justify-content: center;
+        }
+
+        .service-process-container {
+            max-width: 1200px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 75, 150, 0.15);
+            overflow: hidden;
+            margin: 20px;
+        }
+
+        .service-process-header {
+            text-align: center;
+            padding: 45px 25px;
+            background: var(--section-bg);
+            color: var(--text-white);
+        }
+
+        .service-process-header h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .service-process-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .service-process-tabs {
+            display: flex;
+            justify-content: center;
+            background: #f8fafc;
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .service-process-tab {
+            display: flex;
+            align-items: center;
+            padding: 18px 28px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border-radius: 12px;
+            background: var(--bg-color);
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+            border: 2px solid #e2e8f0;
+            min-width: 240px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-process-tab:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            border-color: #cbd5e0;
+        }
+
+        .service-process-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: var((--bg-dark));
+            transition: height 0.4s ease;
+            z-index: 0;
+        }
+
+        .service-process-tab:hover::before {
+            height: 100%;
+        }
+
+        .service-process-tab.active {
+            background: #ebf4ff;
+            border-color: var(--text-blue);
+            box-shadow: 0 5px 20px rgba(44, 130, 201, 0.2);
+        }
+
+        .service-process-tab.active::before {
+            height: 100%;
+        }
+
+        .service-process-tab-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--section-bg);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 18px;
+            color: var(--text-white);
+            font-size: 1.3rem;
+            box-shadow: 0 5px 15px var(--bg-dark);
+            z-index: 1;
+        }
+
+        .service-process-tab-title {
+            font-weight: 600;
+            color: var(--text-black);
+            z-index: 1;
+        }
+
+        .service-process-step-number {
+            display: inline-block;
+            background: var(--bg-dark);
+            color: var(--text-white);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 0.95rem;
+            z-index: 1;
+        }
+
+        .service-process-content-container {
+            display: flex;
+            padding: 45px;
+            min-height: 500px;
+            position: relative;
+        }
+
+        .service-process-tab-content {
+            display: none;
+            animation: fadeIn 0.7s ease forwards;
+            width: 100%;
+        }
+
+        .service-process-tab-content.active {
+            display: flex;
+        }
+
+        .service-process-text-content {
+            flex: 1;
+            padding-right: 45px;
+            z-index: 1;
+        }
+
+        .service-process-image-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 18px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+            background: #f8fafc;
+            max-height: 380px;
+            border: 1px solid rgba(44, 130, 201, 0.1);
+            z-index: 1;
+        }
+
+        .service-process-image-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-process-image-content img:hover {
+            transform: scale(1.04);
+        }
+
+        .service-process-tab-content h3 {
+            font-size: 2.2rem;
+            color: var(--bg-dark);
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .service-process-tab-content h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--bg-dark);
+            border-radius: 2px;
+        }
+
+        .service-process-tab-content p {
+            font-size: 1.15rem;
+            line-height: 1.85;
+            color: var(--bg-dark);
+            margin-bottom: 22px;
+        }
+
+        .service-process-tab-content ul {
+            padding-left: 28px;
+            margin-bottom: 30px;
+        }
+
+        .service-process-tab-content ul li {
+            margin-bottom: 14px;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .service-process-tab-content ul li::before {
+            content: "✓";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: -35px;
+            font-size: 1.2rem;
+        }
+
+        .service-process-tab-content ul li::marker {
+            color: var(--green-color);
+        }
+
+        .service-process-highlight-box {
+            background: var(--bg-color);
+            border-left: 5px solid var(--bg-dark);
+            padding: 25px;
+            border-radius: 0 10px 10px 0;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px var(--bg-dark);
+        }
+
+        .service-process-cta-button {
+            display: inline-block;
+            background: var(--section-bg);
+            color: var(--text-white);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.15rem;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 6px 18px var(--bg-dark);
+            border: none;
+            cursor: pointer;
+            margin-top: 15px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .service-process-cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--section-bg);
+            transition: width 0.4s ease;
+            z-index: -1;
+        }
+
+        .service-process-cta-button:hover::before {
+            width: 100%;
+        }
+
+        .service-process-cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(44, 130, 201, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 950px) {
+            .service-process-content-container {
+                flex-direction: column;
+                padding: 35px;
+            }
+
+            .service-process-text-content {
+                padding-right: 0;
+                padding-top: 35px;
+            }
+
+            .service-process-image-content {
+                max-height: 320px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .service-process-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service-process-tab {
+                width: 100%;
+                max-width: 450px;
+            }
+
+            .service-process-header h2 {
+                font-size: 2.4rem;
+            }
+
+            .service-process-tab-content h3 {
+                font-size: 1.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .service-process-content-container {
+                padding: 25px;
+            }
+
+            .service-process-header {
+                padding: 35px 20px;
+            }
+
+            .service-process-tab {
+                padding: 15px 20px;
+            }
+
+            .service-process-tab-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-process-footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--bg-color);
+            color: var(--bg-dark);
+            font-size: 1.05rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .service-process-indicator {
+            display: flex;
+            justify-content: center;
+            margin: 25px 0;
+            gap: 12px;
+        }
+
+        .service-process-indicator-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+
+        .service-process-indicator-dot.active {
+            background: var(--green-color);
+            transform: scale(1.25);
+        }
+
+        .service-process-indicator-dot:hover {
+            background: var(--accent-color);
+            transform: scale(1.3);
+        }
+
+        .service-process-arrow {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            color: var(--bg-dark);
+            font-size: 1.8rem;
+            opacity: 0.7;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-25px);
+            }
+
+            60% {
+                transform: translateY(-12px);
+            }
+        }
+
+        .service-process-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: var(--text-blue);
+            background-size: 40px 40px;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        /* Service Process Section Ended Here  */
+
+
+
+
+        /* Team Section Starts here  */
+
+        /* Team Section Styling */
+        .team-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--bg-dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--bg-dark);
+            max-width: 700px;
+            margin: 20px auto 0;
+            line-height: 1.6;
+        }
+
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+            padding: 20px;
+        }
+
+        /* Team Card */
+        .team-card {
+            position: relative;
+            height: 400px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(2, 132, 199, 0.15);
+        }
+
+        /* Card Front (Image) */
+        .card-front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            z-index: 2;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 30px;
+            background: linear-gradient(transparent, var(--bg-dark));
+            color: var(--bg-color);
+        }
+
+        .card-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .credentials {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            margin-bottom: 8px;
+        }
+
+        .designation {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        /* Card Back (Details) */
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: var(--bg-color);
+            padding: 35px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            z-index: 1;
+        }
+
+        .card-details {
+            margin-bottom: 25px;
+        }
+
+        .card-details p {
+            color: var(--bg-dark);
+            line-height: 1.7;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .expertise-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .expertise-tags span {
+            background: var(--bg-color);
+            color: var(--bg-dark);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: var(--bg-dark);
+            color: var(--text-white);
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        .contact-btn:hover {
+            background: #0284c7;
+        }
+
+        /* Hover Effects */
+        .team-card:hover .card-front {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .team-card:hover .card-back {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 30px;
+            }
+
+            .team-card {
+                height: 380px;
+            }
+
+            .card-info {
+                padding: 20px;
+            }
+
+            .card-back {
+                padding: 25px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 350px;
+                margin: 0 auto;
+            }
+
+            .card-info h3 {
+                font-size: 1.4rem;
+            }
+        }
+
+
+
+        /* Team Section Ended Here  */
+        /* Why us section started here  */
+        .whyus {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+
+        }
+
+        .whyus-outer-container {
+            max-width: 1200px;
+            width: 100%;
+            background: var(--bg-color);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--bg-dark);
+            overflow: hidden;
+            margin: 40px auto;
+        }
+
+        .whyus-section-title {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: var(--bg-dark);
+            color: var(--text-white);
+        }
+
+        .whyus-section-title h1 {
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .whyus-section-title p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .whyus-main-container {
+            display: flex;
+            min-height: 500px;
+        }
+
+        /* Parallax Image Section */
+        .whyus-image-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-color);
+        }
+
+        .whyus-parallax-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            transition: transform 0.3s ease-out;
+            transform: scale(1.05);
+        }
+
+        .whyus-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(157, 215, 230, 0.85), rgba(90, 194, 241, 0.75));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+
+        }
+
+        .whyus-image-overlay h2 {
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+            color: var(--text-gr-yellow-red);
+        }
+
+        .whyus-image-overlay p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 500px;
+        }
+
+        /* Content Section */
+        .whyus-content-container {
+            flex: 1;
+            padding: 50px 40px;
+            background: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .whyus-counter {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--section-bg);
+            color: var(--text-white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .whyus-slides-container {
+            flex: 1;
+            position: relative;
+        }
+
+        .whyus-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+            transform: translateY(20px);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .whyus-slide.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .whyus-slide h3 {
+            font-size: 2rem;
+            color: var(--bg-dark);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .whyus-slide h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .whyus-slide p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--bg-dark);
+        }
+
+        .whyus-slide i {
+            font-size: 3rem;
+            color: var(--bg-dark);
+            margin-bottom: 20px;
+            opacity: 0.9;
+            transition: transform 0.3s ease;
+        }
+
+        .whyus-slide i:hover {
+            transform: scale(1.1) rotate(5deg);
+            color: var(--text-blue);
+        }
+
+        /* Indicators */
+        .whyus-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .whyus-indicator {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .whyus-indicator.active {
+            background: var(--green-color);
+            transform: scale(1.3);
+
+        }
+
+        .whyus-indicator:hover {
+            background: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .whyus-main-container {
+                flex-direction: column;
+            }
+
+            .whyus-image-container {
+                height: 400px;
+            }
+
+            .whyus-section-title h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .whyus-section-title h1 {
+                font-size: 2rem;
+            }
+
+            .whyus-section-title p {
+                font-size: 1rem;
+            }
+
+            .whyus-image-overlay {
+                padding: 25px;
+            }
+
+            .whyus-image-overlay h2 {
+                font-size: 1.8rem;
+            }
+
+            .whyus-content-container {
+                padding: 30px 20px;
+            }
+
+            .whyus-slide h3 {
+                font-size: 1.7rem;
+            }
+
+            .whyus-counter {
+                top: 10px;
+                right: 10px;
+            }
+        }
+
+        /* Why us section ended here  */
+
+        /* Contact section style started here  */
+        .contact {
+            display: flex;
+            justify-content: center;
+        }
+
+
+        .contact-outer-container {
+            max-width: 1200px;
+            width: 100%;
+            background: var(--bg-color);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--bg-dark);
+            overflow: hidden;
+        }
+
+        .contact-section-title {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: var(--section-bg);
+            color: var(--text-white);
+        }
+
+        .contact-section-title h1 {
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .contact-section-title p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .contact-main-container {
+            display: flex;
+            min-height: 500px;
+        }
+
+        /* Contact Information Section */
+        .contact-info-container {
+            flex: 1;
+            padding: 50px 40px;
+            background: whitesmoke;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-info-container::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: var(--accent-light);
+        }
+
+        .contact-info-container::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: var(--accent-light);
+        }
+
+        .contact-info-container h2 {
+            font-size: 2.3rem;
+            margin-bottom: 40px;
+            color: var(--bg-dark);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .contact-info-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            margin-bottom: 35px;
+            align-items: flex-start;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-info-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .contact-info-icon i {
+            font-size: 1.5rem;
+            color: var(--bg-color);
+        }
+
+        .contact-info-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: var(--bg-dark);
+        }
+
+        .contact-info-content p,
+        .contact-info-content a {
+            font-size: 1.1rem;
+            color: var(--bg-dark);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-info-content a:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .contact-social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--bg-color);
+            color: var(--bg-dark);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-social-link:hover {
+            background: var(--accent-color);
+            color: var(--text-white);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(106, 90, 249, 0.3);
+        }
+
+        /* Contact Form Section */
+        .contact-form-container {
+            flex: 1;
+            padding: 50px 40px;
+            position: relative;
+            background: var(--bg-color);
+        }
+
+        .contact-form-container h2 {
+            font-size: 2.3rem;
+            color: var(--bg-dark);
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .contact-form-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .contact-form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--bg-dark);
+            font-size: 1rem;
+        }
+
+        .contact-form-input,
+        .contact-form-textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--bg-color);
+        }
+
+        .contact-form-input:focus,
+        .contact-form-textarea:focus {
+            border-color: var(--text-blue);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 111, 197, 0.1);
+        }
+
+        .contact-form-input::placeholder,
+        .contact-form-textarea::placeholder {
+            color: var(--bg-dark);
+        }
+
+        .contact-form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form-submit {
+            background: var(--section-bg);
+            color: var(--text-white);
+            border: none;
+            padding: 16px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .contact-form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px var(--bg-dark);
+        }
+
+        .contact-form-submit:active {
+            transform: translateY(1px);
+        }
+
+        .contact-form-message {
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .contact-form-message.success {
+            background: var(--bg-color);
+            color: var(--green-color);
+            border: 1px solid var(--text-blue);
+            display: block;
+        }
+
+        .contact-form-message.error {
+            background: var(--bg-color);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-light);
+            display: block;
+        }
+
+        /* Map Section */
+        .contact-map-container {
+            padding: 0 40px 50px;
+            background: var(--bg-color);
+        }
+
+        .contact-map-container h2 {
+            font-size: 2.3rem;
+            color: var(--bg-dark);
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .contact-map-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .contact-map-frame {
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--bg-dark);
+            background: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-dark);
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .contact-main-container {
+                flex-direction: column;
+            }
+
+            .contact-info-container,
+            .contact-form-container {
+                padding: 40px 30px;
+            }
+
+            .contact-section-title h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .contact-section-title h1 {
+                font-size: 2rem;
+            }
+
+            .contact-section-title p {
+                font-size: 1rem;
+            }
+
+            .contact-info-container,
+            .contact-form-container {
+                padding: 30px 20px;
+            }
+
+            .contact-info-container h2,
+            .contact-form-container h2,
+            .contact-map-container h2 {
+                font-size: 1.8rem;
+            }
+
+            .contact-info-item {
+                flex-direction: column;
+            }
+
+            .contact-info-icon {
+                margin-bottom: 15px;
+            }
+        }
+
+        /* Contact section ended here  */
+
+        /* FAQ Section Starts here  */
+
+        .faq {
+            display: flex;
+            justify-content: center;
+        }
+
+        .faq-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            background-color: var(--text-white);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .faq-header {
+            background: var(--section-bg);
+            color: var(--text-white);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .faq-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .faq-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .faq-items {
+            padding: 25px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eaeef5;
+            padding: 20px 10px;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a202c;
+            cursor: pointer;
+            position: relative;
+            padding-right: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: "+";
+            position: absolute;
+            right: 0;
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--accent-color);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.faq-active .faq-question::after {
+            transform: rotate(45deg);
+            color: #e53e3e;
+        }
+
+        .faq-answer {
+            color: var(--bg-dark);
+            line-height: 1.6;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding-left: 30px;
+        }
+
+        .faq-item.faq-active .faq-answer {
+            max-height: 500px;
+            padding-top: 15px;
+        }
+
+        .faq-footer {
+            text-align: center;
+            padding: 25px;
+            background-color: var(--bg-color);
+            color: var(--bg-dark);
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .faq-container {
+                margin: 20px auto;
+            }
+
+            .faq-header {
+                padding: 20px 15px;
+            }
+
+            .faq-title {
+                font-size: 26px;
+            }
+
+            .faq-subtitle {
+                font-size: 16px;
+            }
+        }
+
+        /* FAQ Section Ended Here  */
+
+        /* Footer Design  */
+
+        footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .footer{
+            display: flex;
+            font-size: var(--font-size-medium);
+            margin-bottom: 10px;
+            padding: 50px 5px;
+            background: var(--section-bg);
+            color: var(--bg-color);
+            max-width: 1200px;
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo-container {
+            width: 60px;
+
+        }
+
+        #copyright-logo-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .footer-logo-container img {
+            width: 50px;
+        }
+
+        .footer-copyright {
+            color: var(--bg-color);
+            text-align: justify;
+            padding-left: 0.2rem;
+            font-size: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .footer-container-div {
+            margin-top: 10px;
+
+        }
+
+        .footer-service-heading {
+            color: var(--bg-color);
+            font-size: var(--font-size-large);
+
+        }
+
+        .footer-content-list li a {
+            color: var(--bg-color);
+        }
+
+        /* mobile design styles */
+        @media (min-width: 600px) {
+
+            footer {
+                flex-direction: row;
+            }
+
+        }
+
+
+
+        /* Tab design  */
+        @media (max-width: 768px) {
+            nav {
+                margin: 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .logo {
+                margin-bottom: 5px;
+                /* Add margin bottom for space */
+                width: 100%;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: calc(var(--nav-height) + 30px);
+                /* Adjust position below logo and hamburger */
+                left: 0;
+                width: 100%;
+                background: var(--bg-dark);
+                flex-direction: column;
+                transform: scaleY(0);
+                transform-origin: top;
+                transition: transform var(--transition-timing);
+                max-height: calc(100vh - var(--nav-height));
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .nav-links.active {
+                transform: scaleY(1);
+            }
+
+            .nav-links li {
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+                padding: 0 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-links li:hover {
+                background-color: var(--text-black);
+                transition: background-color, 2s;
+            }
+
+            .nav-links a {
+                width: 100%;
+                padding: 12px 0;
+                font-size: var(--font-size-medium);
+            }
+
+            .logo img {
+                max-width: 120px;
+                /* Slightly smaller for mobile */
+            }
+
+            /* Animate hamburger icon */
+            .hamburger.active .hamburger__icon {
+                transform: rotate(90deg);
+            }
+
+
+
+
+
+            /* Footer Design  */
+
+
+
+            .footer-container {
+                flex-direction: column;
+                justify-content: space-between;
+                width: 50%;
+            }
+
+            #copyright-logo-container {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            .footer-logo-container img {
+                width: 100px;
+            }
+
+
+
+        }
+
+        /* Desktop hover effects */
+        @media (min-width: 769px) {
+
+            /* common style  */
+            .links li {
+                position: relative;
+                overflow: hidden;
+            }
+
+            .links a::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background-color: var(--accent-color);
+                transition: width var(--transition-timing);
+            }
+
+            .links a:hover::after,
+            .links a:focus-visible::after {
+                width: 100%;
+            }
+
+
+
+            /* navigation bar  */
+            .nav-links {
+                flex-direction: row;
+                /* Align items horizontally */
+            }
+
+            .nav-links li {
+                position: relative;
+                overflow: hidden;
+            }
+
+            .nav-links a::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background-color: var(--accent-color);
+                transition: width var(--transition-timing);
+            }
+
+            .nav-links a:hover::after,
+            .nav-links a:focus-visible::after {
+                width: 100%;
+            }
+
+
+
+
+
+            /* Footer Design  */
+            footer {
+                flex-direction: row;
+                justify-content: space-around;
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+
+            .footer-container {
+                flex-direction: row;
+                justify-content: space-around;
+                width: 50%;
+            }
+
+            #copyright-logo-container {
+                flex-direction: column;
+            }
+
+            .footer-logo-container img {
+                width: 100px;
+            }
+
+        }
+
+        /* Smooth scroll behavior */
+        @media (prefers-reduced-motion: no-preference) {
+            html {
+                scroll-behavior: smooth;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="/"><img src="./assets/img/logo/Logo.png" alt="Lab Guideline">
+                    <p class="brand-name">labguideline.com</p>
+                </a>
+                <div class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </div>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li>
+                    <a href="/Services">Services</a>
+                </li>
+                </li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="./pages/standardPage.html">Standards</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Content goes here -->
+    <main id="main">
+        <section class="hero" id="home">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>Everything You Need for <span>ISO Certification</span></h1>
+                    <p>Supporting organizations in reaching their ISO certification objectives with expert guidance and
+                        comprehensive solutions.</p>
+                    <div class="hero-btns">
+                        <a href="#services" class="btn">Our Services</a>
+                        <a href="#contact" class="btn btn-secondary">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="service" id="services">
+            <div class="service-header">
+                <h1>Our Laboratory Services</h1>
+                <p>Professional services to ensure your laboratory meets international standards and operates with
+                    excellence</p>
+            </div>
+
+            <div class="services-container">
+                <!-- ISO Certification Card -->
+                <div class="service-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="ISO Certification">
+                        <div class="certification-badge">ISO 17025</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="service-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>ISO Certification</h3>
+                        <p>Comprehensive ISO 17025 certification services to help your laboratory achieve international
+                            recognition. Our experts guide you through the entire process from gap analysis to final
+                            accreditation.</p>
+                        <a href="#" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Internal Audit Card -->
+                <div class="service-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Internal Audit">
+                    </div>
+                    <div class="card-content">
+                        <div class="service-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h3>Internal Audit</h3>
+                        <p>Professional internal audit services to ensure compliance with quality management systems.
+                            Our auditors provide detailed reports with actionable recommendations for improvement.</p>
+                        <a href="#" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- ISO Training Card -->
+                <div class="service-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="ISO Training">
+                    </div>
+                    <div class="card-content">
+                        <div class="service-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3>ISO Training</h3>
+                        <p>Customized training programs for laboratory staff on ISO standards, quality management, and
+                            technical competence. Available in-person or through our e-learning platform.</p>
+                        <a href="#" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Method Validation Card -->
+                <div class="service-card">
+                    <div class="card-image">
+                        <img src="./img/service/" alt="Method Validation">
+                        <div class="certification-badge">ISO 17025</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="service-icon">
+                            <i class="fas fa-vial"></i>
+                        </div>
+                        <h3>Method Validation</h3>
+                        <p>Expert validation of laboratory testing methods to ensure accuracy, precision, and
+                            reliability. We help you establish documented evidence that your methods are fit for
+                            purpose.</p>
+                        <a href="#" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quality Management Card -->
+                <div class="service-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Quality Management">
+                    </div>
+                    <div class="card-content">
+                        <div class="service-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h3>Quality Management</h3>
+                        <p>Implementation and optimization of quality management systems tailored to your laboratory's
+                            specific needs. We help you establish processes that ensure consistent quality outcomes.</p>
+                        <a href="#" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Technical Consultation Card -->
+                <div class="service-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Technical Consultation">
+                    </div>
+                    <div class="card-content">
+                        <div class="service-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>Technical Consultation</h3>
+                        <p>Expert technical consultation services to resolve complex laboratory challenges. Our
+                            specialists provide practical solutions for instrumentation, methodology, and data analysis.
+                        </p>
+                        <a href="#" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-process">
+            <div class="service-process-container">
+                <div class="service-process-header">
+                    <h2>Service Process Flow</h2>
+                    <p>Our structured approach to ensure quality and efficiency</p>
+                </div>
+
+                <div class="service-process-tabs">
+                    <div class="service-process-tab active" data-tab="gap-analysis">
+                        <div class="service-process-tab-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="service-process-tab-title">
+                            <span class="service-process-step-number">1</span> Gap Analysis
+                        </div>
+                    </div>
+
+                    <div class="service-process-tab" data-tab="documentation">
+                        <div class="service-process-tab-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="service-process-tab-title">
+                            <span class="service-process-step-number">2</span> Documentation & Implementation
+                        </div>
+                    </div>
+
+                    <div class="service-process-tab" data-tab="training">
+                        <div class="service-process-tab-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="service-process-tab-title">
+                            <span class="service-process-step-number">3</span> Training & Awareness
+                        </div>
+                    </div>
+
+                    <div class="service-process-tab" data-tab="onsite">
+                        <div class="service-process-tab-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <div class="service-process-tab-title">
+                            <span class="service-process-step-number">4</span> On-site Consultancy & Training
+                        </div>
+                    </div>
+
+                    <div class="service-process-tab" data-tab="certification">
+                        <div class="service-process-tab-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="service-process-tab-title">
+                            <span class="service-process-step-number">5</span> External Certification Audit
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-process-content-container">
+                    <div class="service-process-bg-pattern"></div>
+
+                    <!-- Gap Analysis Content -->
+                    <div class="service-process-tab-content active" id="gap-analysis">
+                        <div class="service-process-text-content">
+                            <h3>Gap Analysis</h3>
+                            <p>Our initial assessment identifies the differences between your current processes and the
+                                requirements of the desired standard. This comprehensive evaluation helps us understand
+                                your organization's starting point and what needs to be implemented.</p>
+
+                            <div class="service-process-highlight-box">
+                                <p>During this phase, our experts conduct thorough interviews, review existing
+                                    documentation, and observe current practices to identify areas that require
+                                    improvement.</p>
+                            </div>
+
+                            <p>Key activities include:</p>
+                            <ul>
+                                <li>Evaluation of existing management systems</li>
+                                <li>Identification of compliance gaps</li>
+                                <li>Risk assessment and analysis</li>
+                                <li>Resource allocation planning</li>
+                                <li>Development of preliminary roadmap</li>
+                            </ul>
+                        </div>
+                        <div class="service-process-image-content">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+                                alt="Gap Analysis Illustration">
+                        </div>
+                        <div class="service-process-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <!-- Documentation Content -->
+                    <div class="service-process-tab-content" id="documentation">
+                        <div class="service-process-text-content">
+                            <h3>Documentation & Implementation</h3>
+                            <p>We develop comprehensive documentation tailored to your organization's specific needs and
+                                industry requirements. Our documentation includes policies, procedures, work
+                                instructions, and forms that align with the standard's requirements.</p>
+
+                            <p>Our implementation process includes:</p>
+                            <ul>
+                                <li>Developing a customized documentation framework</li>
+                                <li>Creating process maps and workflow diagrams</li>
+                                <li>Establishing record-keeping systems</li>
+                                <li>Implementing control mechanisms</li>
+                                <li>Setting up monitoring and measurement processes</li>
+                            </ul>
+
+                            <p>We ensure all documentation is clear, concise, and easily understood by your team
+                                members.</p>
+                        </div>
+                        <div class="service-process-image-content">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+                                alt="Documentation Process">
+                        </div>
+                        <div class="service-process-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <!-- Training Content -->
+                    <div class="service-process-tab-content" id="training">
+                        <div class="service-process-text-content">
+                            <h3>Training & Awareness</h3>
+                            <p>Effective training ensures that your team understands the new processes and their roles
+                                within the system. We develop customized training programs based on the specific needs
+                                of different organizational levels.</p>
+
+                            <div class="service-process-highlight-box">
+                                <p>Our training approach combines theoretical knowledge with practical exercises to
+                                    ensure concepts are understood and can be applied in daily operations.</p>
+                            </div>
+
+                            <p>Training modules include:</p>
+                            <ul>
+                                <li>Executive overview sessions for leadership</li>
+                                <li>Implementation training for process owners</li>
+                                <li>Role-specific training for employees</li>
+                                <li>Internal auditor training</li>
+                                <li>Continuous improvement workshops</li>
+                            </ul>
+                        </div>
+                        <div class="service-process-image-content">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+                                alt="Training Session">
+                        </div>
+                        <div class="service-process-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <!-- On-site Content -->
+                    <div class="service-process-tab-content" id="onsite">
+                        <div class="service-process-text-content">
+                            <h3>On-site Consultancy & Training</h3>
+                            <p>Our experts work directly with your team at your facility to ensure proper implementation
+                                and address any challenges in real-time. This hands-on approach helps to embed the new
+                                processes into your organization's culture.</p>
+
+                            <p>On-site activities include:</p>
+                            <ul>
+                                <li>Process implementation support</li>
+                                <li>Internal audit assistance</li>
+                                <li>Management review preparation</li>
+                                <li>Corrective action guidance</li>
+                                <li>Pre-certification assessment</li>
+                            </ul>
+
+                            <p>We focus on knowledge transfer to ensure your team becomes self-sufficient in maintaining
+                                the system after our engagement.</p>
+                        </div>
+                        <div class="service-process-image-content">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+                                alt="On-site Consultancy">
+                        </div>
+                        <div class="service-process-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <!-- Certification Content -->
+                    <div class="service-process-tab-content" id="certification">
+                        <div class="service-process-text-content">
+                            <h3>External Certification Audit</h3>
+                            <p>We guide you through the final step of obtaining official certification. Our team
+                                prepares you for the audit and supports you throughout the process to ensure a
+                                successful outcome.</p>
+
+                            <div class="service-process-highlight-box">
+                                <p>Our preparation includes a mock audit that simulates the certification process,
+                                    helping to identify any last-minute improvements and building confidence in your
+                                    team.</p>
+                            </div>
+
+                            <p>The certification process includes:</p>
+                            <ul>
+                                <li>Selection of accredited certification body</li>
+                                <li>Stage 1 documentation review preparation</li>
+                                <li>Stage 2 on-site audit support</li>
+                                <li>Addressing non-conformities</li>
+                                <li>Post-certification maintenance planning</li>
+                            </ul>
+                            <button class="service-process-cta-button">Start Certification Process</button>
+                        </div>
+                        <div class="service-process-image-content">
+                            <img src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+                                alt="Certification Audit">
+                        </div>
+                        <div class="service-process-arrow">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-process-indicator">
+                    <div class="service-process-indicator-dot active" data-tab="gap-analysis"></div>
+                    <div class="service-process-indicator-dot" data-tab="documentation"></div>
+                    <div class="service-process-indicator-dot" data-tab="training"></div>
+                    <div class="service-process-indicator-dot" data-tab="onsite"></div>
+                    <div class="service-process-indicator-dot" data-tab="certification"></div>
+                </div>
+
+                <div class="service-process-footer">
+                    <p>Our comprehensive 5-step service process ensures a smooth transition to certified compliance with
+                        minimal disruption to your operations.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <div class="section-header">
+                <h2>Our Scientific Team</h2>
+                <p>Meet our team of accredited laboratory consultants with expertise across multiple scientific
+                    disciplines and regulatory frameworks.</p>
+            </div>
+
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-card">
+                    <div class="card-front">
+                        <img src="./img/team/azad.png" alt="Azad Rahman Raj" class="card-image">
+                        <div class="card-info">
+                            <h3>Azad Rahman Raj</h3>
+                            <div class="credentials">M.Sc., Microbiology, BD</div>
+                            <div class="designation">Director of Chemistry Services</div>
+                        </div>
+                    </div>
+
+                    <div class="card-back">
+                        <div class="card-details">
+                            <p>15+ years in analytical chemistry. Expert in HPLC-MS method development and validation.
+                                Former lead chemist at FDA-regulated pharmaceutical lab.</p>
+                            <div class="expertise-tags">
+                                <span>HPLC-MS</span>
+                                <span>GMP Compliance</span>
+                                <span>Method Validation</span>
+                                <span>ICH Guidelines</span>
+                            </div>
+                        </div>
+                        <a href="#" class="contact-btn">Consult with Sarah</a>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-card">
+                    <div class="card-front">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=700&q=80"
+                            alt="Dr. Michael Chen" class="card-image">
+                        <div class="card-info">
+                            <h3>Dr. Michael Chen</h3>
+                            <div class="credentials">Ph.D., DABCC, FACB</div>
+                            <div class="designation">Lead Molecular Diagnostics</div>
+                        </div>
+                    </div>
+
+                    <div class="card-back">
+                        <div class="card-details">
+                            <p>Specialized in molecular diagnostics and PCR validation. Developed 12 FDA-approved IVD
+                                assays. Published 30+ peer-reviewed papers.</p>
+                            <div class="expertise-tags">
+                                <span>PCR Validation</span>
+                                <span>NGS</span>
+                                <span>IVD Development</span>
+                                <span>CAP/CLIA</span>
+                            </div>
+                        </div>
+                        <a href="#" class="contact-btn">Consult with Michael</a>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="team-card">
+                    <div class="card-front">
+                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=700&q=80"
+                            alt="Dr. Priya Sharma" class="card-image">
+                        <div class="card-info">
+                            <h3>Dr. Priya Sharma</h3>
+                            <div class="credentials">Ph.D., RAC, PMP</div>
+                            <div class="designation">Regulatory Affairs Director</div>
+                        </div>
+                    </div>
+
+                    <div class="card-back">
+                        <div class="card-details">
+                            <p>20+ years in regulatory strategy for medical devices. Managed 50+ successful FDA/CE
+                                submissions. Expert in ISO 13485 and EU MDR compliance.</p>
+                            <div class="expertise-tags">
+                                <span>FDA Submissions</span>
+                                <span>ISO 13485</span>
+                                <span>EU MDR</span>
+                                <span>Quality Systems</span>
+                            </div>
+                        </div>
+                        <a href="#" class="contact-btn">Consult with Priya</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="whyus">
+            <div class="whyus-outer-container">
+                <div class="whyus-section-title">
+                    <h1>Why Choose Us?</h1>
+                    <p>Discover what makes us the perfect partner for your success</p>
+                </div>
+
+                <div class="whyus-main-container">
+                    <div class="whyus-image-container">
+                        <div class="whyus-parallax-image"></div>
+                        <div class="whyus-image-overlay">
+                            <h2>Excellence in Every Detail</h2>
+                            <p>Our team is dedicated to delivering exceptional results through innovation and passion.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="whyus-content-container">
+                        <div class="whyus-counter">1/4</div>
+                        <div class="whyus-slides-container">
+                            <div class="whyus-slide active">
+                                <i class="fas fa-lightbulb"></i>
+                                <h3>Innovative Solutions</h3>
+                                <p>We constantly push boundaries to deliver cutting-edge solutions tailored to your
+                                    unique needs. Our creative approach ensures you stay ahead of the competition in
+                                    today's rapidly evolving market.</p>
+                            </div>
+
+                            <div class="whyus-slide">
+                                <i class="fas fa-users"></i>
+                                <h3>Expert Team</h3>
+                                <p>Our team consists of industry veterans with over 15 years of collective experience.
+                                    We combine diverse expertise to provide comprehensive solutions that drive real
+                                    business results.</p>
+                            </div>
+
+                            <div class="whyus-slide">
+                                <i class="fas fa-chart-line"></i>
+                                <h3>Proven Results</h3>
+                                <p>We've helped over 500 clients achieve measurable success. Our data-driven approach
+                                    ensures we deliver tangible ROI and sustainable growth for your business.</p>
+                            </div>
+
+                            <div class="whyus-slide">
+                                <i class="fas fa-hands-helping"></i>
+                                <h3>Dedicated Support</h3>
+                                <p>Our commitment doesn't end at delivery. We provide ongoing support and strategic
+                                    guidance to help you maximize the value of our solutions long-term.</p>
+                            </div>
+                        </div>
+
+                        <div class="whyus-indicators">
+                            <div class="whyus-indicator active" data-index="0"></div>
+                            <div class="whyus-indicator" data-index="1"></div>
+                            <div class="whyus-indicator" data-index="2"></div>
+                            <div class="whyus-indicator" data-index="3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="contact" id="contact">
+            <div class="contact-outer-container">
+                <div class="contact-section-title">
+                    <h1>Get In Touch</h1>
+                    <p>We'd love to hear from you. Contact us today!</p>
+                </div>
+
+                <div class="contact-main-container">
+                    <div class="contact-info-container">
+                        <h2>Contact Information</h2>
+
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-info-content">
+                                <h3>Our Location</h3>
+                                <p>123 Innovation Street, Tech City, TC 10001</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-info-content">
+                                <h3>Phone Number</h3>
+                                <p><a href="tel:+11234567890">+1 (123) 456-7890</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-info-content">
+                                <h3>Email Address</h3>
+                                <p><a href="mailto:info@company.com">info@company.com</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-info-content">
+                                <h3>Working Hours</h3>
+                                <p>Monday - Friday: 9AM - 6PM</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-social-links">
+                            <a href="#" class="contact-social-link">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="contact-social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="contact-social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="contact-social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-container">
+                        <h2>Send Us a Message</h2>
+
+                        <form class="contact-form" id="contactForm">
+                            <div class="contact-form-group">
+                                <label class="contact-form-label" for="contactName">Full Name</label>
+                                <input type="text" id="contactName" class="contact-form-input"
+                                    placeholder="Enter your name" required>
+                            </div>
+
+                            <div class="contact-form-group">
+                                <label class="contact-form-label" for="contactEmail">Email Address</label>
+                                <input type="email" id="contactEmail" class="contact-form-input"
+                                    placeholder="Enter your email" required>
+                            </div>
+
+                            <div class="contact-form-group">
+                                <label class="contact-form-label" for="contactSubject">Subject</label>
+                                <input type="text" id="contactSubject" class="contact-form-input"
+                                    placeholder="Enter subject">
+                            </div>
+
+                            <div class="contact-form-group">
+                                <label class="contact-form-label" for="contactMessage">Your Message</label>
+                                <textarea id="contactMessage" class="contact-form-textarea"
+                                    placeholder="Type your message here..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="contact-form-submit">Send Message</button>
+
+                            <div class="contact-form-message" id="contactMessageElement"></div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="contact-map-container">
+                    <h2>Find Us on Map</h2>
+                    <div class="contact-map-frame">
+                        <i class="fas fa-map-marked-alt"></i> &nbsp; Google Maps Location
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="faq">
+            <div class="faq-container">
+                <div class="faq-header">
+                    <h1 class="faq-title">ISO Certification Process</h1>
+                    <p class="faq-subtitle">Frequently Asked Questions about obtaining and maintaining ISO certification
+                    </p>
+                </div>
+
+                <div class="faq-items">
+                    <div class="faq-item">
+                        <div class="faq-question">What is ISO certification and why is it important?</div>
+                        <div class="faq-answer">
+                            ISO certification is a seal of approval from a third-party body that a company runs to one
+                            of the international standards developed and published by the International Organization for
+                            Standardization (ISO). It demonstrates that your organization follows industry best
+                            practices, improves efficiency, enhances customer satisfaction, and helps meet regulatory
+                            requirements.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">What are the most common ISO standards?</div>
+                        <div class="faq-answer">
+                            The most common ISO standards include:
+                            <ul>
+                                <li>ISO 9001: Quality Management Systems</li>
+                                <li>ISO 14001: Environmental Management Systems</li>
+                                <li>ISO 45001: Occupational Health and Safety</li>
+                                <li>ISO 27001: Information Security Management</li>
+                                <li>ISO 50001: Energy Management Systems</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">What are the key steps in the ISO certification process?</div>
+                        <div class="faq-answer">
+                            The certification process typically involves:
+                            <ol>
+                                <li>Gap analysis to assess current practices</li>
+                                <li>Development and implementation of required processes</li>
+                                <li>Employee training and awareness</li>
+                                <li>Internal audits to verify compliance</li>
+                                <li>Management review</li>
+                                <li>Selection of a certification body</li>
+                                <li>Stage 1 (documentation review) and Stage 2 (on-site) audits</li>
+                                <li>Addressing any non-conformities</li>
+                                <li>Certification decision and issuance</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">How long does the certification process typically take?</div>
+                        <div class="faq-answer">
+                            The timeline varies depending on the organization's size, complexity, and current level of
+                            compliance. For small to medium-sized businesses, the process typically takes 6-12 months.
+                            Larger organizations may require 12-18 months. Preparation time before the actual
+                            certification audit is the most significant factor.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">What is the cost of obtaining ISO certification?</div>
+                        <div class="faq-answer">
+                            Costs vary significantly based on:
+                            <ul>
+                                <li>Organization size and number of locations</li>
+                                <li>Scope of certification</li>
+                                <li>Current state of compliance</li>
+                                <li>Choice of certification body</li>
+                                <li>Need for external consultants</li>
+                            </ul>
+                            For a small business, costs typically range from $5,000 to $15,000. Medium-sized businesses
+                            might spend $15,000-$30,000, while large enterprises can exceed $50,000.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">How often do we need to renew ISO certification?</div>
+                        <div class="faq-answer">
+                            ISO certificates are typically valid for three years. During this period, you'll need to
+                            undergo surveillance audits (usually annually) to maintain certification. After three years,
+                            you'll need to complete a recertification audit to renew your certificate for another
+                            three-year period.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">What happens during a surveillance audit?</div>
+                        <div class="faq-answer">
+                            Surveillance audits are conducted annually to ensure continued compliance. They typically:
+                            <ul>
+                                <li>Review changes to the organization and its processes</li>
+                                <li>Assess the effectiveness of the management system</li>
+                                <li>Verify corrective actions from previous audits</li>
+                                <li>Examine selected areas of the standard</li>
+                                <li>Check internal audit and management review processes</li>
+                            </ul>
+                            These audits are shorter than the initial certification audit and focus on maintaining
+                            compliance.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">Can we implement multiple ISO standards simultaneously?</div>
+                        <div class="faq-answer">
+                            Yes, implementing multiple standards simultaneously is not only possible but often
+                            recommended. Many ISO standards follow the High-Level Structure (HLS), making integration
+                            easier. An Integrated Management System (IMS) can combine quality, environmental, safety,
+                            and other standards into a unified framework, reducing duplication and improving efficiency.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">What are the most common reasons for failing an ISO audit?</div>
+                        <div class="faq-answer">
+                            The most common reasons for audit failures include:
+                            <ul>
+                                <li>Lack of documented procedures and records</li>
+                                <li>Failure to implement corrective actions effectively</li>
+                                <li>Inadequate internal audit programs</li>
+                                <li>Poor management review processes</li>
+                                <li>Non-conformities not properly addressed</li>
+                                <li>Employee unawareness of policies and procedures</li>
+                                <li>Insufficient evidence of process effectiveness</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">How do we choose a certification body?</div>
+                        <div class="faq-answer">
+                            Consider these factors when selecting a certification body:
+                            <ul>
+                                <li>Accreditation status (ensure they're accredited by a recognized body)</li>
+                                <li>Industry experience and expertise</li>
+                                <li>Reputation and client references</li>
+                                <li>Auditor qualifications and consistency</li>
+                                <li>Cost structure and value for money</li>
+                                <li>Geographic coverage if you have multiple locations</li>
+                                <li>Their approach to the audit process and client support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer">
+                    <div class="footer-container ft-left-container">
+            <div class="footer-container-div">
+                <h3 class="footer-service-heading">Services</h3>
+                <ul class="footer-content-list links">
+                    <li><a href="#">Documentation for ISO 17025</a></li>
+                    <li><a href="#">Gap Assessment</a></li>
+                    <li><a href="#">Risk Assessment</a></li>
+                    <li><a href="#">Uncertainty Measurement</a></li>
+                    <li><a href="#">Method Validation</a></li>
+                    <li><a href="#">Training and live demonastration</a></li>
+                </ul>
+            </div>
+            <div class="footer-container-div">
+                <h3 class="footer-service-heading">Resources</h3>
+                <ul class="footer-content-list links">
+                    <li><a href="#">ISO 17025</a></li>
+                    <li><a href="#">HACCP</a></li>
+                    <li><a href="#">Quality Management System</a></li>
+                    <li><a href="#">Food Safety</a></li>
+                    <li><a href="#">TQM</a></li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="footer-container ft-right-container">
+
+            <div class="footer-container-div">
+                <h3 class="footer-service-heading">Pages</h3>
+                <ul class="footer-content-list links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#standards">Standards</a></li>
+                </ul>
+            </div>
+            <div id="copyright-logo-container" class="footer-container-div">
+                <div class="footer-logo-container">
+                    <img src="./img/logo/Logo.png" alt="Labguideline logo">
+                </div>
+                <div class="footer-copyright">
+                    <p>Copyright © 2025</p>
+                    <p>All Rights Reserved By Labguideline.com</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Navbar Toggle ---
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('nav-links');
+            const mainContent = document.getElementById('main');
+
+            // Function to toggle the navigation
+            const toggleNav = () => {
+                const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+                hamburger.setAttribute('aria-expanded', !isExpanded);
+                navLinks.classList.toggle('active');
+
+                // Apply the smooth transition to the main content
+                if (!isExpanded) {
+                    // Calculate the height of the navigation menu
+                    const navHeight = navLinks.offsetHeight;
+                    mainContent.style.transform = `translateY(${navHeight}px)`;
+                } else {
+                    mainContent.style.transform = 'translateY(0)';
+                }
+            };
+            // Click event for hamburger btn 
+            hamburger?.addEventListener('click', toggleNav);
+
+            // Add touch event for mobile devices
+            hamburger.addEventListener('touchstart', (e) => {
+                e.preventDefault(); // Prevent default to avoid double-tap zoom
+                toggleNav();
+            });
+
+            // Close menu when clicking outside of it
+            document.addEventListener('click', (e) => {
+                const isHamburger = e.target === hamburger || hamburger.contains(e.target);
+                const isNavLinks = e.target === navLinks || navLinks.contains(e.target);
+
+                if (!isHamburger && !isNavLinks && navLinks.classList.contains('active')) {
+                    toggleNav();
+                }
+            });
+
+            // Close menu when clicking outside of it
+            document.addEventListener('click', (e) => {
+                const isHamburger = e.target === hamburger || hamburger.contains(e.target);
+                const isNavLinks = e.target === navLinks || navLinks.contains(e.target);
+
+                if (!isHamburger && !isNavLinks && navLinks.classList.contains('active')) {
+                    toggleNav();
+                }
+            });
+            // Hero section
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+
+                        // Close mobile menu if open
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+            // Hero section ended here
+
+            // --- Service Cards Animation ---
+            const serviceCards = document.querySelectorAll('.service-card');
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            serviceCards.forEach(card => {
+                Object.assign(card.style, {
+                    opacity: 0,
+                    transform: 'translateY(20px)',
+                    transition: 'opacity 0.6s ease, transform 0.6s ease'
+                });
+                observer.observe(card);
+            });
+
+            // --- Service Flow Tabs ---
+            const tabs = document.querySelectorAll('.service-process-tab');
+            const dots = document.querySelectorAll('.service-process-indicator-dot');
+            const contents = document.querySelectorAll('.service-process-tab-content');
+
+            function activateTab(id) {
+                tabs.forEach(tab => tab.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                contents.forEach(content => content.classList.remove('active'));
+
+                document.querySelector(`.service-process-tab[data-tab="${id}"]`)?.classList.add('active');
+                document.querySelector(`.service-process-indicator-dot[data-tab="${id}"]`)?.classList.add('active');
+                document.getElementById(id)?.classList.add('active');
+            }
+
+            [...tabs, ...dots].forEach(el => {
+                el.addEventListener('click', () => activateTab(el.getAttribute('data-tab')));
+            });
+
+            activateTab('gap-analysis');
+
+            // --- Footer Year ---
+            const yearSpan = document.getElementById('current-year');
+            yearSpan && (yearSpan.textContent = new Date().getFullYear());
+
+            // --- Why Us Section ---
+            const whySlides = document.querySelectorAll('.whyus-slide');
+            const whyDots = document.querySelectorAll('.whyus-indicator');
+            const counter = document.querySelector('.whyus-counter');
+            let whyIndex = 0;
+
+            const parallax = document.querySelector('.whyus-parallax-image');
+            window.addEventListener('scroll', () => {
+                if (parallax) {
+                    const scale = Math.min(1.2, 1.05 + window.pageYOffset * 0.0002);
+                    parallax.style.transform = `scale(${scale})`;
+                }
+            });
+
+            function showWhySlide(i) {
+                whySlides.forEach(s => s.classList.remove('active'));
+                whyDots.forEach(d => d.classList.remove('active'));
+                whySlides[i]?.classList.add('active');
+                whyDots[i]?.classList.add('active');
+                counter.textContent = `${i + 1}/${whySlides.length}`;
+                whyIndex = i;
+            }
+
+            let whyInterval = setInterval(() => showWhySlide((whyIndex + 1) % whySlides.length), 4000);
+
+            whyDots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const i = parseInt(dot.getAttribute('data-index'));
+                    showWhySlide(i);
+                    clearInterval(whyInterval);
+                    whyInterval = setInterval(() => showWhySlide((whyIndex + 1) % whySlides.length), 4000);
+                });
+            });
+
+            // --- Contact Form ---
+            const form = document.getElementById('contactForm');
+            const messageEl = document.getElementById('contactMessageElement');
+
+            form?.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const name = document.getElementById('contactName').value.trim();
+                const email = document.getElementById('contactEmail').value.trim();
+                const subject = document.getElementById('contactSubject').value;
+                const message = document.getElementById('contactMessage').value.trim();
+
+                if (!name || !email || !message) {
+                    messageEl.textContent = 'Please fill in all required fields.';
+                    messageEl.className = 'contact-form-message error';
+                    return;
+                }
+
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(email)) {
+                    messageEl.textContent = 'Please enter a valid email address.';
+                    messageEl.className = 'contact-form-message error';
+                    return;
+                }
+
+                messageEl.textContent = 'Thank you! Your message has been sent successfully.';
+                messageEl.className = 'contact-form-message success';
+
+                setTimeout(() => {
+                    form.reset();
+                    messageEl.classList.add('hidden');
+                }, 3000);
+            });
+
+            // --- FAQ Section ---
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.querySelector('.faq-question')?.addEventListener('click', () => {
+                    item.classList.toggle('faq-active');
+                });
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>

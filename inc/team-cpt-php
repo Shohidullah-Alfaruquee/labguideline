@@ -1,0 +1,68 @@
+<?php
+
+// Service Flow section
+
+/**
+ * Add custom settings to the Theme Customizer for the team section header.
+ * Text domain used: labguideline
+ */
+function lab_guideline_team_customize_register( $wp_customize ) {
+
+    // 1. Add a new section for team section settings
+    $wp_customize->add_section( 'team_header_section', array(
+        'title'    => __( 'Section team Header', 'labguideline' ),
+        'priority' => 33, // Position it below default sections
+    ) );
+
+    // 2. Setting for the Main Title (H2)
+    $wp_customize->add_setting( 'team_title', array(
+        'default'           => 'Our Scientific Team', // Default text
+        'transport'         => 'refresh', 
+        'sanitize_callback' => 'sanitize_text_field', // Sanitize input
+    ) );
+
+    // Control for the Main Title
+    $wp_customize->add_control( 'team_title_control', array(
+        'label'    => __( 'Section Main Title', 'labguideline' ),
+        'section'  => 'team_header_section',
+        'settings' => 'team_title',
+        'type'     => 'text',
+    ) );
+
+    // 3. Setting for the Subtitle (P)
+    $wp_customize->add_setting( 'team_subtitle', array(
+        'default'           => 'Meet our team of accredited laboratory consultants with expertise across multiple scientific disciplines and regulatory frameworks.',
+        'transport'         => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+
+    // Control for the Subtitle
+    $wp_customize->add_control( 'team_subtitle_control', array(
+        'label'    => __( 'Section Subtitle/Description', 'labguideline' ),
+        'section'  => 'team_header_section',
+        'settings' => 'team_subtitle',
+        'type'     => 'textarea', // Use textarea for longer text
+    ) );
+}
+add_action( 'customize_register', 'lab_guideline_team_customize_register' );
+
+/**
+ * Helper function to retrieve and display the dynamic team section header text.
+ * This function will be called directly in the template file.
+ * Text domain used: labguideline
+ */
+function lab_guideline_display_team_header() {
+    
+    // Retrieve the saved values, falling back to defaults
+    $title    = get_theme_mod( 'team_title', __( 'team section Flow', 'labguideline' ) );
+    $subtitle = get_theme_mod( 'team_subtitle', __( 'Our structured approach to ensure quality and efficiency', 'labguideline' ) );
+
+    // Display the dynamic HTML structure
+    ?>
+    <div class="section-header">
+        <h2><?php echo esc_html( $title ); ?></h2>
+        <p><?php echo esc_html( $subtitle ); ?></p>
+    </div>
+    <?php
+}
+?>
